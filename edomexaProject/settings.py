@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*msr&l!gl_1%a@=z%#!@^+_%vx@b)13==c7w*6-!ignqct4l$8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['alcestapruebas.online', '72.167.100.60']
+ALLOWED_HOSTS = ['.alcestapruebas.online', '0.0.0.0', '127.0.0.1']
 
 
 # Application definition
@@ -121,7 +121,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATICFILES_DIRS = [BASE_DIR +"/assets",]
+STATICFILES_DIRS = [str(BASE_DIR) + "/assets"]
 STATIC_ROOT = '/home/ws0p96bqxvlr/public_html/static'
 MEDIA_ROOT = '/home/ws0p96bqxvlr/public_html/media'
 
