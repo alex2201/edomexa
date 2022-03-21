@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'edomexa/estilos.css' %}">
+    <link rel="stylesheet" href="{% static 'edomexa/bootstrap/css/bootstrap.min.css' %}">
+    <title>EDOMEXA</title>
+</head>
+
+<body class="min-vh-100">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light navbar-main">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img id="logo" src="{% static 'edomexa/resources/edomexa.svg' %}">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+                {% block navbar %}
+                    {% for o in navbar_options %}
+                        {% if o.2 %}
+                            <a class="nav-link active" aria-current="page" href="{{ o.1 }}">{{ o.0 }}</a>
+                        {% else %}
+                            <a class="nav-link" href="{{ o.1 }}">{{ o.0 }}</a>
+                        {% endif %}
+                    {% endfor %}
+                {% endblock navbar %}
+            </div>
+        </div>
+    </div>
+</nav>
+
+{% block content %}
+    <h1>Content of the page</h1>
+{% endblock content %}
+
+{% include 'edomexa/footer.html' %}
+
+<script src="{% static 'edomexa/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*msr&l!gl_1%a@=z%#!@^+_%vx@b)13==c7w*6-!ignqct4l$8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.alcestapruebas.online', '0.0.0.0', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -105,9 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-mx'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
@@ -118,10 +118,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+print("BASE DIR", str(BASE_DIR))
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATICFILES_DIRS = [str(BASE_DIR) + "/assets"]
+STATICFILES_DIRS = [str(BASE_DIR) + "/static"]
 STATIC_ROOT = '/home/ws0p96bqxvlr/public_html/static'
 MEDIA_ROOT = '/home/ws0p96bqxvlr/public_html/media'
 

@@ -1,0 +1,27 @@
+{% extends "edomexa/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="container-lg d-flex align-items-center flex-column mt-4">
+
+        <div class="post-header position-relative">
+            <img src="{{ sections.3.content }}" alt="post-image">
+            <div class="position-absolute post-card-image-text-overlay">
+                <h3 class="text-center p-0">{{ sections.0.content }}</h3>
+                <h6 class="text-muted text-center">{{ sections.1.content }}</h6>
+            </div>
+        </div>
+
+        {% autoescape off %}
+
+            <div class="{{ sections.2.css_class }} post-section-type-text">
+                {{ sections.2.content }}
+            </div>
+
+        {% endautoescape %}
+
+    </div>
+
+{% endblock content %}

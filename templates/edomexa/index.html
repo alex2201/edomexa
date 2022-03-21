@@ -1,0 +1,252 @@
+{% extends "edomexa/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <!-- Fondo valle de bravo -->
+    <div class="container-fluid p-0">
+
+        <div class="container-fluid p-0 position-relative">
+            <img class="bg-hero" src="{% static 'edomexa/resources/VALLEIMAGEN.png' %}" alt="Valle de Bravo"/>
+
+            <div class="container-fluid p-0 position-absolute top-0 left-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                <p class="text-center hero-text">La guía de viajes definitiva para recorrer el Estado de México, dónde
+                    ir, qué hacer, que comer y que tomar. Siéntete orgulloso de ser #edomexa.</p>
+            </div>
+        </div>
+
+        <!-- Fondo montaña -->
+        <div class="container-fluid p-0 position-relative bg-dark">
+            <img class="bg-hero" src="{% static 'edomexa/resources/imagennevado.png' %}" alt="Montañas"/>
+
+            <div class="container-fluid position-absolute top-0 left-0 w-100 h-100 d-flex flex-column justify-content-start align-items-start">
+                <div class="container-fluid" style="padding: 7%">
+                    <p class="text-leading hero-title">NOSOTROS...</p>
+                    <p class="text-leading hero-text-2">
+                        #Edomexa es un proyecto que nace del entusiasmo, amor, cariño y orgullo que los edomexas tenemos
+                        por nuestras tradiciones, por nuestra gente y por el encanto de nuestro estado.
+                    </p>
+                    <a class="btn btn-outline-primary" href="/nosotros" role="button">leer más</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Secciones -->
+    <div class="container-fluid">
+
+        <div class="row">
+
+            {% for s in sections.values %}
+                <div class="col-lg-4 col-sm-12">
+                    <div class="d-flex flex-column justify-content-start align-items-center contenedor-secciones">
+
+                        <div class="icono-seccion">
+                            <img class="img-seccion" src="{% static s.3 %}" alt="img-section">
+                        </div>
+
+{#                        {% autoescape off %}#}
+{#                            <p class="text-center titulo-seccion">{{ s.1 }}</p>#}
+{#                        {% endautoescape %}#}
+
+                        <div class="d-flex">
+                            <p class="text-center texto-seccion">{{ s.2 }}</p>
+                        </div>
+
+                        <div class="d-flex flex-grow-1 align-items-end">
+                            <a class="btn btn-outline-primary btn-sm boton-seccion"
+                               href="{% url "site_section" s.4 %}" role="button">leer
+                                más...</a>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <!-- Formularios -->
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-6 col-sm-12 p-3">
+
+                    <div class="contenedor-formulario d-flex flex-column justify-content-start align-items-center">
+
+
+                        <div class="icono-formulario">
+                            <img class="imagen-icono-formulario" src="{% static 'edomexa/resources/ubicacion.png' %}"
+                                 alt="icono-postular-lugar"/>
+                        </div>
+
+                        <div>
+                            <p class="titulo-formulario mb-1">
+                                Postular lugar
+                            </p>
+                        </div>
+
+                        <form action="{% url 'submit-place' %}" class="formulario" method="post" id="place-form">
+
+                            {% csrf_token %}
+
+                            <fieldset>
+
+                                <div class="mb-3">
+                                    <label for="seleccion-exampleFormControlInput1" class="form-label">Nombre del
+                                        lugar</label>
+                                    <input type="text" class="form-control" id="nombre-lugar"
+                                           name="nombre-lugar"
+                                           placeholder="Nombre del lugar">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="seleccion-municipio" class="form-label">Municipio</label>
+                                    <select id="seleccion-municipio" class="form-select" name="seleccion-municipio"
+                                            aria-label="Default select example">
+                                        <option selected>Seleccione</option>
+                                        {% for m in municipios %}
+                                            <option value="{{ m.0 }}">{{ m.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-check-label">
+                                        Tipo de lugar
+                                    </label>
+
+                                    {% for l in tipo_lugar %}
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="{{ l.0 }}"
+                                                   id="{{ l.0 }}">
+                                            <label class="form-check-label" for="{{ l.0 }}">
+                                                {{ l.1 }}
+                                            </label>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="texto-lugar-descripcion" class="form-label">Breve
+                                        descripción</label>
+                                    <textarea class="form-control" id="texto-lugar-descripcion"
+                                              name="texto-lugar-descripcion" rows="3"></textarea>
+                                </div>
+
+                            </fieldset>
+
+                            <input type="submit" value="Enviar">
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 col-sm-12 p-3">
+
+                    <div class="contenedor-formulario d-flex flex-column justify-content-start align-items-center">
+
+                        <div class="icono-formulario">
+                            <img class="imagen-icono-formulario" src="{% static 'edomexa/resources/usuario.png' %}"
+                                 alt="icono-postular-lugar"/>
+                        </div>
+
+                        <div>
+                            <p class="titulo-formulario mb-1">
+                                Postular persona
+                            </p>
+                        </div>
+
+                        <form action="" class="formulario">
+
+                            <div class="mb-3">
+                                <label class="form-label">Nombre(s)</label>
+                                <input type="text" class="form-control" placeholder="Nombre(s)">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" placeholder="Apellidos">
+                            </div>
+
+                            <div class="mb-2 d-flex align-items-center">
+                                <img src="{% static 'edomexa/resources/negocios.png' %}" alt="facebook"
+                                     class="icono-red-social-formulario p-0">
+                                <label class="form-label p-1">@</label>
+                                <input type="text" class="form-control p-1" placeholder="facebook">
+                            </div>
+
+                            <div class="mb-2 d-flex align-items-center">
+                                <img src="{% static 'edomexa/resources/negocios.png' %}" alt="facebook"
+                                     class="icono-red-social-formulario p-0">
+                                <label class="form-label p-1">@</label>
+                                <input type="text" class="form-control p-1" placeholder="instagram">
+                            </div>
+
+                            <div class="mb-2 d-flex align-items-center">
+                                <img src="{% static 'edomexa/resources/negocios.png' %}" alt="facebook"
+                                     class="icono-red-social-formulario p-0">
+                                <label class="form-label p-1">@</label>
+                                <input type="text" class="form-control p-1" placeholder="tiktok">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Breve descripción</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        let form = document.getElementById('place-form')
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            let data = new FormData(form)
+
+            const request = new XMLHttpRequest();
+
+            request.open(form.method, form.action)
+
+            request.setRequestHeader('X-CSRFToken', data.csrfmiddlewaretoken);
+
+            request.onreadystatechange = function () {
+                if (this.readyState === 4) {
+
+                    if (this.status === 200) {
+                        var response = JSON.parse(this.responseText);
+
+                        console.log(response)
+
+                        alert("Form sent!")
+                    } else {
+
+                        if (!alert('There was an error with your request, please try again.')) {
+                            window.location.reload();
+                        }
+
+                    }
+                }
+
+            };
+
+            request.send(data);
+        })
+    </script>
+
+{% endblock content %}
