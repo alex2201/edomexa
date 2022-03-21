@@ -55,6 +55,8 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunPython(init_post_section_types),
+        migrations.RunPython(init_site_sections),
         migrations.CreateModel(
             name='Place',
             fields=[
@@ -117,67 +119,59 @@ class Migration(migrations.Migration):
             name='town',
             field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='edomexa.town'),
         ),
-        migrations.RunPython(
-            code=edomexa.migrations.0002_auto_20220224_0235.init_post_section_types,
-    ),
-    migrations.AlterField(
-        model_name='place',
-        name='name',
-        field=models.CharField(max_length=200, unique=True),
-    ),
-    migrations.AlterField(
-        model_name='town',
-        name='name',
-        field=models.CharField(max_length=200, unique=True),
-    ),
-    migrations.AddConstraint(
-        model_name='postsection',
-        constraint=models.UniqueConstraint(fields=('index', 'post'), name='unique_sectionIndex_post'),
-    ),
-    migrations.AlterModelOptions(
-        name='postsection',
-        options={'ordering': ('post', 'index'), 'verbose_name': 'sección', 'verbose_name_plural': 'secciones'},
-    ),
-    migrations.CreateModel(
-        name='SiteSection',
-        fields=[
-            ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-            ('name', models.CharField(max_length=50)),
-        ],
-        options={
-            'verbose_name': 'sección del sitio',
-            'verbose_name_plural': 'secciones del sitio',
-        },
-    ),
-    migrations.RunPython(
-        code=edomexa.migrations
-    .0006
-    _auto_20220224_0404.init_site_sections,
-    ),
-    migrations.AddField(
-        model_name='post',
-        name='site_section',
-        field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.PROTECT, to='edomexa.sitesection'),
-        preserve_default=False,
-    ),
-    migrations.AlterModelOptions(
-        name='post',
-        options={'ordering': ('id',)},
-    ),
-    migrations.AlterModelOptions(
-        name='sitesection',
-        options={'ordering': ('id',), 'verbose_name': 'sección del sitio',
-                 'verbose_name_plural': 'secciones del sitio'},
-    ),
-    migrations.AlterField(
-        model_name='place',
-        name='location',
-        field=models.CharField(blank=True, default='', max_length=300),
-    ),
-    migrations.AddField(
-        model_name='sitesection',
-        name='banner_path',
-        field=models.CharField(default='', max_length=200),
-        preserve_default=False,
-    ),
+        migrations.AlterField(
+            model_name='place',
+            name='name',
+            field=models.CharField(max_length=200, unique=True),
+        ),
+        migrations.AlterField(
+            model_name='town',
+            name='name',
+            field=models.CharField(max_length=200, unique=True),
+        ),
+        migrations.AddConstraint(
+            model_name='postsection',
+            constraint=models.UniqueConstraint(fields=('index', 'post'), name='unique_sectionIndex_post'),
+        ),
+        migrations.AlterModelOptions(
+            name='postsection',
+            options={'ordering': ('post', 'index'), 'verbose_name': 'sección', 'verbose_name_plural': 'secciones'},
+        ),
+        migrations.CreateModel(
+            name='SiteSection',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=50)),
+            ],
+            options={
+                'verbose_name': 'sección del sitio',
+                'verbose_name_plural': 'secciones del sitio',
+            },
+        ),
+        migrations.AddField(
+            model_name='post',
+            name='site_section',
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.PROTECT, to='edomexa.sitesection'),
+            preserve_default=False,
+        ),
+        migrations.AlterModelOptions(
+            name='post',
+            options={'ordering': ('id',)},
+        ),
+        migrations.AlterModelOptions(
+            name='sitesection',
+            options={'ordering': ('id',), 'verbose_name': 'sección del sitio',
+                     'verbose_name_plural': 'secciones del sitio'},
+        ),
+        migrations.AlterField(
+            model_name='place',
+            name='location',
+            field=models.CharField(blank=True, default='', max_length=300),
+        ),
+        migrations.AddField(
+            model_name='sitesection',
+            name='banner_path',
+            field=models.CharField(default='', max_length=200),
+            preserve_default=False,
+        ),
     ]
