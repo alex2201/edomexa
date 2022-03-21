@@ -55,8 +55,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(init_post_section_types),
-        migrations.RunPython(init_site_sections),
         migrations.CreateModel(
             name='Place',
             fields=[
@@ -174,4 +172,6 @@ class Migration(migrations.Migration):
             field=models.CharField(default='', max_length=200),
             preserve_default=False,
         ),
+        migrations.RunPython(init_post_section_types),
+        migrations.RunPython(init_site_sections),
     ]
