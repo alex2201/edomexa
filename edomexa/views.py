@@ -43,8 +43,6 @@ def post_detail(request, post_id: int):
     post = Post.objects.get(pk=post_id)
     sections = post.postsection_set.all()
 
-    print(request.path)
-
     context = {
         'navbar_options': c.create_navbar_options(request.path),
         'p_id': post_id,
