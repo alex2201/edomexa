@@ -130,3 +130,10 @@ MEDIA_ROOT = '/home/ws0p96bqxvlr/public_html/media'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_HOST = 'edomexa.com'
+EMAIL_HOST_USER = 'no-reply@edomexa.com'
+EMAIL_HOST_PASSWORD = 'Admin.4321$'
+EMAIL_PORT = 465
+EMAIL_SUBJECT_PREFIX = '[email-bot]'
+EMAIL_USE_SSL = True

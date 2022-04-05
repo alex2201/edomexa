@@ -15,6 +15,9 @@ def create_navbar_options(current_path: str):
     return NAVBAR_OPTIONS
 
 
+EMAIL_LIST = ('edomexa23@gmail.com', 'alejandrocastillo0088@gmail.com')
+
+
 HOMEPAGE_SECTIONS = {
     'lugares-extraordinarios': (
         1,

@@ -30,8 +30,7 @@ body {
 #logo {
     max-height: 40px;
     height: 40px;
-    width: 100%;
-    /*height: 100%;*/
+    width: 150px;
 }
 
 .contenedor-texto {
@@ -76,6 +75,7 @@ body {
 
 .bg-hero {
     object-fit: fill;
+    width: 100vw;
     max-width: 100%;
 }
 
@@ -129,21 +129,32 @@ body {
     border-color: var(--secondary-color) !important;
 }
 
+.boton-formulario {
+    color: white !important;
+    background-color: var(--primary-color) !important;
+}
+
+.boton-formulario:hover {
+    /*color: white !important;*/
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 2px 1px var(--primary-color);
+    /*background-color: var(--primary-color) !important;*/
+}
+
 .contenedor-formulario {
     height: 80vh;
-    background-color: var(--primary-color);
-    border-radius: 8vh;
+    background-color: var(--light-purple);
+    box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.25);
 }
 
 .icono-formulario {
-    height: 10vh;
-    width: 10vh;
-    padding-top: 10px;
+    height: 30px;
+    width: 30px;
 }
 
 .imagen-icono-formulario {
-    height: 10vh;
-    width: 10vh;
+    height: 60px;
+    width: 60px;
     object-fit: contain;
 }
 
@@ -175,6 +186,11 @@ body {
     /*object-fit: cover;*/
     width: 100%;
     height: auto;
+}
+
+.form-card {
+    background-color: var(--light-purple) !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .post-card {

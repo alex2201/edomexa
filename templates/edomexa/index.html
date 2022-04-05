@@ -47,9 +47,9 @@
                             <img class="img-seccion" src="{% static s.3 %}" alt="img-section">
                         </div>
 
-{#                        {% autoescape off %}#}
-{#                            <p class="text-center titulo-seccion">{{ s.1 }}</p>#}
-{#                        {% endautoescape %}#}
+                        {#                        {% autoescape off %}#}
+                        {#                            <p class="text-center titulo-seccion">{{ s.1 }}</p>#}
+                        {#                        {% endautoescape %}#}
 
                         <div class="d-flex">
                             <p class="text-center texto-seccion">{{ s.2 }}</p>
@@ -74,25 +74,18 @@
 
                 <div class="col-lg-6 col-sm-12 p-3">
 
-                    <div class="contenedor-formulario d-flex flex-column justify-content-start align-items-center">
+                    <div class="card form-card d-flex flex-column justify-content-start align-items-center">
 
-
-                        <div class="icono-formulario">
+                        <div class="d-flex justify-content-center p-2">
                             <img class="imagen-icono-formulario" src="{% static 'edomexa/resources/ubicacion.png' %}"
                                  alt="icono-postular-lugar"/>
                         </div>
 
-                        <div>
-                            <p class="titulo-formulario mb-1">
-                                Postular lugar
-                            </p>
-                        </div>
-
-                        <form action="{% url 'submit-place' %}" class="formulario" method="post" id="place-form">
-
+                        <form class="w-75" action="{% url 'submit-place' %}" method="post" id="place-form">
                             {% csrf_token %}
 
                             <fieldset>
+                                <legend class="text-center">Postular Lugar</legend>
 
                                 <div class="mb-3">
                                     <label for="seleccion-exampleFormControlInput1" class="form-label">Nombre del
@@ -121,8 +114,8 @@
 
                                     {% for l in tipo_lugar %}
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="{{ l.0 }}"
-                                                   id="{{ l.0 }}">
+                                            <input class="form-check-input" type="radio" name="tipo-lugar-group"
+                                                   id="{{ l.0 }}" value="{{ l.1 }}">
                                             <label class="form-check-label" for="{{ l.0 }}">
                                                 {{ l.1 }}
                                             </label>
@@ -138,10 +131,11 @@
                                               name="texto-lugar-descripcion" rows="3"></textarea>
                                 </div>
 
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-primary mb-3 boton-formulario">Enviar</button>
+                                </div>
+
                             </fieldset>
-
-                            <input type="submit" value="Enviar">
-
                         </form>
 
                     </div>
@@ -150,58 +144,57 @@
 
                 <div class="col-lg-6 col-sm-12 p-3">
 
-                    <div class="contenedor-formulario d-flex flex-column justify-content-start align-items-center">
+                    <div class="card form-card d-flex flex-column justify-content-start align-items-center">
 
-                        <div class="icono-formulario">
+                        <div class="d-flex justify-content-center p-2">
                             <img class="imagen-icono-formulario" src="{% static 'edomexa/resources/usuario.png' %}"
                                  alt="icono-postular-lugar"/>
                         </div>
 
-                        <div>
-                            <p class="titulo-formulario mb-1">
-                                Postular persona
-                            </p>
-                        </div>
+                        <form class="w-75" action="{% url 'submit-person' %}" method="post" id="person-form">
+                            {% csrf_token %}
 
-                        <form action="" class="formulario">
+                            <fieldset>
+                                <legend class="text-center">Postular Persona</legend>
 
-                            <div class="mb-3">
-                                <label class="form-label">Nombre(s)</label>
-                                <input type="text" class="form-control" placeholder="Nombre(s)">
-                            </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="nombre-persona">Nombre(s)</label>
+                                    <input type="text" class="form-control" id="nombre-persona" name="nombre-persona" placeholder="Nombre(s)">
+                                </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Apellidos</label>
-                                <input type="text" class="form-control" placeholder="Apellidos">
-                            </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="apellidos-persona">Apellidos</label>
+                                    <input type="text" class="form-control" id="apellidos-persona" name="apellidos-persona" placeholder="Apellidos">
+                                </div>
 
-                            <div class="mb-2 d-flex align-items-center">
-                                <img src="{% static 'edomexa/resources/negocios.png' %}" alt="facebook"
-                                     class="icono-red-social-formulario p-0">
-                                <label class="form-label p-1">@</label>
-                                <input type="text" class="form-control p-1" placeholder="facebook">
-                            </div>
+                                <div class="mb-2 d-flex align-items-center">
+                                    <img src="{% static 'edomexa/resources/ico_fb.svg' %}" alt="facebook"
+                                         class="icono-red-social-formulario p-0">
+                                    <label class="form-label p-1" for="facebook">@</label>
+                                    <input type="text" class="form-control p-1" id="facebook" name="facebook" placeholder="facebook">
+                                </div>
 
-                            <div class="mb-2 d-flex align-items-center">
-                                <img src="{% static 'edomexa/resources/negocios.png' %}" alt="facebook"
-                                     class="icono-red-social-formulario p-0">
-                                <label class="form-label p-1">@</label>
-                                <input type="text" class="form-control p-1" placeholder="instagram">
-                            </div>
+                                <div class="mb-2 d-flex align-items-center">
+                                    <img src="{% static 'edomexa/resources/ico_insta.svg' %}" alt="facebook"
+                                         class="icono-red-social-formulario p-0">
+                                    <label class="form-label p-1" for="instagram">@</label>
+                                    <input type="text" class="form-control p-1" id="instagram" name="instagram" placeholder="instagram">
+                                </div>
 
-                            <div class="mb-2 d-flex align-items-center">
-                                <img src="{% static 'edomexa/resources/negocios.png' %}" alt="facebook"
-                                     class="icono-red-social-formulario p-0">
-                                <label class="form-label p-1">@</label>
-                                <input type="text" class="form-control p-1" placeholder="tiktok">
-                            </div>
+                                <div class="mb-2 d-flex align-items-center">
+                                    <img src="{% static 'edomexa/resources/ico_tiktok.svg' %}" alt="facebook"
+                                         class="icono-red-social-formulario p-0">
+                                    <label class="form-label p-1" for="tiktok">@</label>
+                                    <input type="text" class="form-control p-1" id="tiktok" name="tiktok" placeholder="tiktok">
+                                </div>
 
-                            <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">Breve descripción</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-primary mb-3 boton-formulario">Enviar</button>
+                                </div>
 
+                            </fieldset>
                         </form>
+
                     </div>
 
                 </div>
@@ -213,15 +206,15 @@
     </div>
 
     <script>
-        let form = document.getElementById('place-form')
-        form.addEventListener('submit', function (event) {
+        let f = function (event) {
             event.preventDefault();
             event.stopPropagation();
+            let target = event.target
             let data = new FormData(form)
 
             const request = new XMLHttpRequest();
 
-            request.open(form.method, form.action)
+            request.open(target.method, target.action)
 
             request.setRequestHeader('X-CSRFToken', data.csrfmiddlewaretoken);
 
@@ -232,6 +225,7 @@
                         var response = JSON.parse(this.responseText);
 
                         console.log(response)
+                        target.reset()
 
                         alert("Form sent!")
                     } else {
@@ -246,7 +240,13 @@
             };
 
             request.send(data);
-        })
+        }
+
+        var form = document.getElementById('place-form')
+        form.addEventListener('submit', f)
+
+        form = document.getElementById('person-form')
+        form.addEventListener('submit', f)
     </script>
 
 {% endblock content %}
