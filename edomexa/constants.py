@@ -1,6 +1,6 @@
 def create_navbar_options(current_path: str):
     NAVBAR_OPTIONS = (
-        ['NOSOTROS', '/nosotros', False],
+        ['NOSOTRXS', '/nosotros', False],
         ['LUGARES EXTRAORDINARIOS', '/section/lugares-extraordinarios', False],
         ['ORGULLO EDOMEXA', '/section/orgullo-edomexa', False],
         ['EVENTOS', '/section/eventos', False],
