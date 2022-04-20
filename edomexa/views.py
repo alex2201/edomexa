@@ -31,11 +31,10 @@ def site_section(request, section_id):
         return Http404()
 
     postsDB = sectionDB.post_set.all()
-    p_sections = [x.postsection_set.all() for x in postsDB]
     context = {
         'navbar_options': c.create_navbar_options(request.path),
         'section': sectionDB,
-        'posts': p_sections,
+        'posts': postsDB,
     }
 
     return render(request, 'edomexa/seccion.html', context)
@@ -43,13 +42,13 @@ def site_section(request, section_id):
 
 def post_detail(request, post_id: int):
     post = Post.objects.get(pk=post_id)
-    sections = post.postsection_set.all()
+
+    if post is None:
+        return Http404()
 
     context = {
         'navbar_options': c.create_navbar_options(request.path),
-        'p_id': post_id,
-        'post': post,
-        'sections': sections,
+        'post_html_path': post.html_path
     }
     return render(request, 'edomexa/detalle_seccion.html', context)
 
