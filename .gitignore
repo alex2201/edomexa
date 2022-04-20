@@ -135,3 +135,7 @@ GitHub.sublime-settings
 !.vscode/launch.json
 !.vscode/extensions.json
 .history
+/templates/edomexa/blogs/css/bootstrap-4.4.1.css
+/templates/edomexa/blogs/js/bootstrap-4.4.1.js
+/templates/edomexa/blogs/js/jquery-3.4.1.min.js
+/templates/edomexa/blogs/js/popper.min.js
