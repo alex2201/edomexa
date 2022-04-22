@@ -36,7 +36,7 @@ HOMEPAGE_SECTIONS = {
     'eventos': (
         4,
         'EVENTOS<br>-',
-        'Encuentra los meiores eventos en Estado de México esta semana y descubre todas las actividades en tu zona Consulta nuestras recomendaciones de eventos y actividades de ocio. v no te quedes sin olan este fin de semana en Estado de México.',
+        'Encuentra los meiores eventos en Estado de México esta semana y descubre todas las actividades en tu zona Consulta nuestras recomendaciones de eventos y actividades de ocio, y no te quedes sin plan este fin de semana en Estado de México.',
         'edomexa/resources/ico_eventos.png',
         'eventos',
     ),

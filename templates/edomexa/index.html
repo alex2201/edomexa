@@ -155,33 +155,38 @@
 
                                 <div class="mb-3">
                                     <label class="form-label" for="nombre-persona">Nombre(s)</label>
-                                    <input type="text" class="form-control" id="nombre-persona" name="nombre-persona" placeholder="Nombre(s)">
+                                    <input type="text" class="form-control" id="nombre-persona" name="nombre-persona"
+                                           placeholder="Nombre(s)">
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label" for="apellidos-persona">Apellidos</label>
-                                    <input type="text" class="form-control" id="apellidos-persona" name="apellidos-persona" placeholder="Apellidos">
+                                    <input type="text" class="form-control" id="apellidos-persona"
+                                           name="apellidos-persona" placeholder="Apellidos">
                                 </div>
 
                                 <div class="mb-2 d-flex align-items-center">
                                     <img src="{% static 'edomexa/resources/ico_fb.svg' %}" alt="facebook"
                                          class="icono-red-social-formulario p-0">
                                     <label class="form-label p-1" for="facebook">@</label>
-                                    <input type="text" class="form-control p-1" id="facebook" name="facebook" placeholder="facebook">
+                                    <input type="text" class="form-control p-1" id="facebook" name="facebook"
+                                           placeholder="facebook">
                                 </div>
 
                                 <div class="mb-2 d-flex align-items-center">
                                     <img src="{% static 'edomexa/resources/ico_insta.svg' %}" alt="facebook"
                                          class="icono-red-social-formulario p-0">
                                     <label class="form-label p-1" for="instagram">@</label>
-                                    <input type="text" class="form-control p-1" id="instagram" name="instagram" placeholder="instagram">
+                                    <input type="text" class="form-control p-1" id="instagram" name="instagram"
+                                           placeholder="instagram">
                                 </div>
 
                                 <div class="mb-2 d-flex align-items-center">
                                     <img src="{% static 'edomexa/resources/ico_tiktok.svg' %}" alt="facebook"
                                          class="icono-red-social-formulario p-0">
                                     <label class="form-label p-1" for="tiktok">@</label>
-                                    <input type="text" class="form-control p-1" id="tiktok" name="tiktok" placeholder="tiktok">
+                                    <input type="text" class="form-control p-1" id="tiktok" name="tiktok"
+                                           placeholder="tiktok">
                                 </div>
 
                                 <div class="d-flex justify-content-center">
@@ -206,7 +211,7 @@
             event.preventDefault();
             event.stopPropagation();
             let target = event.target
-            let data = new FormData(form)
+            let data = new FormData(target)
 
             const request = new XMLHttpRequest();
 
@@ -223,13 +228,9 @@
                         console.log(response)
                         target.reset()
 
-                        alert("Form sent!")
+                        alert("Formulario enviado.")
                     } else {
-
-                        if (!alert('There was an error with your request, please try again.')) {
-                            window.location.reload();
-                        }
-
+                        alert('Hubo un error al enviar el formulario. Intenta de nuevo.')
                     }
                 }
 
@@ -238,11 +239,11 @@
             request.send(data);
         }
 
-        var form = document.getElementById('place-form')
-        form.addEventListener('submit', f)
+        let form1 = document.getElementById('place-form')
+        form1.addEventListener('submit', f)
 
-        form = document.getElementById('person-form')
-        form.addEventListener('submit', f)
+        let form2 = document.getElementById('person-form')
+        form2.addEventListener('submit', f)
     </script>
 
 {% endblock content %}

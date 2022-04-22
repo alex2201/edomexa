@@ -54,7 +54,6 @@ def post_detail(request, post_id: int):
 
 
 def submit_form_place(request):
-    print(request.POST)
     data = request.POST
     municipio = ''
 
