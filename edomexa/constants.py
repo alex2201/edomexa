@@ -22,7 +22,7 @@ HOMEPAGE_SECTIONS = {
     'lugares-extraordinarios': (
         1,
         'LUGARES<br>EXTRAORDINARIOS',
-        'El Estado de México es una de las regiones de la república que ofrece una gran cantidad de atractivos turísticos. Es rico en bellezas naturales, sitios arqueológicos y lugares históricos. Cuenta con ocho corredores turísticos que te harán maravillarte con la grandeza de su territorio.',
+        'El Estado de México es una de las entidades de la república que ofrece una gran cantidad de atractivos turísticos. Es rico en bellezas naturales, sitios arqueológicos y lugares históricos. Cuenta con ocho corredores turísticos que te harán maravillarte con la grandeza de su territorio.',
         'edomexa/resources/ico_lugares.png',
         'lugares-extraordinarios',
     ),
